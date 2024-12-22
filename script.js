@@ -18,17 +18,17 @@ document.getElementById('set-timer').addEventListener('click', () => {
     else seconds = Number(seconds);
 
     let totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
-    
+
     hours = document.getElementById('hours').value = '';
     minutes = document.getElementById('minutes').value = '';
     seconds = document.getElementById('seconds').value = '';
 
-    if(totalSeconds > 0) createTimer(totalSeconds);
+    if (totalSeconds > 0) createTimer(totalSeconds);
 })
 
 
 function createTimer(totalSeconds) {
-    
+
     const timerUI = document.createElement('div');
     let timerId = `timer${timersDivCount}`;
     timersDivCount++;
@@ -45,18 +45,18 @@ function createTimer(totalSeconds) {
 
     const showTimeDiv = document.createElement('show-time');
     showTimeDiv.className = 'show-time';
-    
+
     const hours_p = document.createElement('p');
     hours_p.className = 'hours-left';
-    hours_p.innerText = hours;
+    hours_p.innerText = hours > 9 ? hours : `0${hours}`;
 
     const minutes_p = document.createElement('p');
     minutes_p.className = 'minutes-left';
-    minutes_p.innerText = minutes;
+    minutes_p.innerText = minutes > 9 ? minutes : `0${minutes}`;
 
     const seconds_p = document.createElement('p');
     seconds_p.className = 'seconds-left';
-    seconds_p.innerText = seconds;
+    seconds_p.innerText = seconds > 9 ? seconds : `0${seconds}`;
 
     const span1 = document.createElement('span');
     span1.innerText = ':';
@@ -67,8 +67,9 @@ function createTimer(totalSeconds) {
 
     const deleteButton = document.createElement('button');
     deleteButton.innerText = 'Delete';
-    deleteButton.onclick  = () => {
+    deleteButton.onclick = () => {
         deleteTimer(deleteButton);
+        checkIsEmpty();
     }
 
     timerUI.append(staticTextDiv, showTimeDiv, deleteButton);
@@ -95,27 +96,29 @@ function createTimer(totalSeconds) {
             stopButton.innerText = 'Stop';
             stopButton.onclick = () => {
                 stopButton.parentNode.remove();
+                checkIsEmpty();
             }
 
             timerUI.append(hiddenText, timerEndMessage, stopButton);
 
             const newUtter = new SpeechSynthesisUtterance(`Time is up`);
             speechSynth.speak(newUtter);
+            checkIsEmpty();
         }
         else {
             const currentTimer = document.getElementById(timerId);
             const hours_left = currentTimer.querySelector('.hours-left');
             const minutes_left = currentTimer.querySelector('.minutes-left');
             const seconds_left = currentTimer.querySelector('.seconds-left');
-    
+
             hours = Math.floor(totalSeconds / 3600);
             minutes = Math.floor(totalSeconds / 60) % 60;
             seconds = (totalSeconds % 60);
-    
-            hours_left.innerText = hours;
-            minutes_left.innerText = minutes;
-            seconds_left.innerText = seconds;
-    
+
+            hours_left.innerText = hours > 9 ? hours : `0${hours}`;
+            minutes_left.innerText = minutes > 9 ? minutes : `0${minutes}`;
+            seconds_left.innerText = seconds > 9 ? seconds : `0${seconds}`;
+
             totalSeconds--;
         }
     }, 1000);
@@ -124,5 +127,19 @@ function createTimer(totalSeconds) {
     function deleteTimer(deleteButton) {
         clearInterval(intervalId);
         deleteButton.parentNode.remove();
+    }
+
+    checkIsEmpty();
+}
+
+function checkIsEmpty() {
+    const emptyIndicator = document.getElementById('no-timers-indicator');
+
+    let boxes = document.querySelector('.box');
+    if (boxes) {
+        emptyIndicator.style.display = 'none';
+    }
+    else {
+        emptyIndicator.style.display = 'block';
     }
 }

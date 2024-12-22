@@ -14,6 +14,19 @@ body {
     text-align: center;
 }
 
+.setter-box {
+    width: 450px;
+    height: 70px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #34344a;
+    padding-inline: 20px;
+    border-radius: 7px;
+    font-size: 18px;
+}
+
 .box {
     width: 450px;
     height: 70px;
@@ -63,6 +76,7 @@ button {
     font-weight: 600;
     font-size: 16px;
     cursor: pointer;
+    border: none;
 }
 button:active {
     background-color: #d6df23;
@@ -108,12 +122,24 @@ button:active {
     border: none;   
 }
 
+#no-timers-indicator {
+    text-align: center;
+}
+
 
 /* small screens */
 
 @media screen and (max-width: 520px) {
     #heading {
         font-size: 24px;
+    }
+
+    .setter-box {
+        width: 90%;
+        height: 60px;
+        padding-inline: 15px;
+        border-radius: 5px;
+        font-size: 16px;
     }
 
     .box {
@@ -124,6 +150,10 @@ button:active {
         font-size: 16px;
     }
 
+    .inputs-box {
+        gap: 5px;
+    }
+    
     .inputs-box input {
         font-size: 16px;
     }
