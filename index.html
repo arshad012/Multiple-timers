@@ -4,8 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Multiple TImers</h1>
+    <h1 id="heading">Multiple Timers App</h1>
+
+    <div class="box">
+        <div class="static-text">Set Time:</div>
+        <div class="inputs-box">
+            <input id="hours" type="number" placeholder="HH" maxlength="2">
+            <span>:</span>
+            <input id="minutes" type="number" placeholder="MM">
+            <span>:</span>
+            <input id="seconds" type="number" placeholder="SS">
+        </div>
+        <button id="set-timer">Set</button>
+    </div>
+
+    <p id="timers-heading">Current Timers</p>
+    
+    <div id="timers-section">
+        <!--  -->
+    </div>
 </body>
 </html>
+
+<script src="script.js" type="module"></script>

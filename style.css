@@ -1,0 +1,147 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    background-color: #1d1d24;
+    color: white;
+    padding-bottom: 20px;
+}
+* {
+    font-family: "Inter", serif;
+}
+
+#heading {
+    text-align: center;
+}
+
+.box {
+    width: 450px;
+    height: 70px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #34344a;
+    padding-inline: 20px;
+    border-radius: 7px;
+    font-size: 18px;
+}
+
+.box + .box {
+    margin-top: 30px;
+}
+
+
+.inputs-box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.inputs-box input {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    text-decoration: underline;
+    font-size: 18px;
+    background-color: inherit;
+    color: white;
+    border: none;
+    outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button {
+    background-color: #f0f757;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:active {
+    background-color: #d6df23;
+}
+
+
+/* Timer section */
+#timers-heading {
+    background-color: grey;
+    width: 250px;
+    height: 40px;
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    border-radius: 40px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.show-time {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+}
+
+.show-time p {
+    margin: 0;
+}
+
+.timerEndMessage {
+    font-size: larger;
+    color: black;
+    font-weight: bolder;
+}
+
+.stopButton {
+    background-color: #34344a;
+    color: white;
+    border: none;   
+}
+
+
+/* small screens */
+
+@media screen and (max-width: 520px) {
+    #heading {
+        font-size: 24px;
+    }
+
+    .box {
+        width: 90%;
+        height: 60px;
+        padding-inline: 15px;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .inputs-box input {
+        font-size: 16px;
+    }
+
+    #timers-heading {
+        width: 200px;
+        height: 35px;
+        font-size: 18px;
+        letter-spacing: 1px;
+        font-weight: normal;
+    }
+
+    .show-time {
+        font-size: 18px;
+    }
+
+    .stopButton {
+        background-color: #34344a;
+        font-weight: 400;
+    }
+}
